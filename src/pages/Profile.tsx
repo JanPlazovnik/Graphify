@@ -1,24 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Artist, Track } from '../types/spotify';
+import { SpotifyProfile } from '../types/spotify';
 import useApi from '../hooks/useApi';
-import ArtistPanel from '../components/ArtistPanel';
-import TrackPanel from '../components/TrackPanel';
 
 export default function Profile() {
     const api = useApi();
-    const [artists, setArtists] = useState<Artist[]>([]);
-    const [tracks, setTracks] = useState<Track[]>([]);
+    const [profile, setProfile] = useState<SpotifyProfile|null>(null);
 
     async function fetchProfileData() {
         try {
-            {
-                const { data: { items } } = await api.spotify.artists();
-                setArtists(items);
-            }
-            {
-                const { data: { items } } = await api.spotify.tracks();
-                setTracks(items);
-            }
+            const {data} = await api.spotify.me();
+            setProfile(data);
         }
         catch (e: any) {
             console.error(e);
@@ -30,13 +21,12 @@ export default function Profile() {
     }, []);
 
     return (
-        <div className='flex flex-col container max-w-4xl mx-auto text-white justify-center'>
-            <h2 className='text-3xl font-bold my-7'>Your Top {artists.length} artists</h2>
-            
-            {artists.map((artist: Artist, index: number) => (<ArtistPanel artist={artist} order={index + 1} key={index}/>))}
-
-            <h2 className='text-3xl font-bold my-7'>Your Top {tracks.length} tracks</h2>
-            {tracks.map((track: Track, index: number) => (<TrackPanel track={track} order={index + 1} key={index} />))}
+        <div className='flex flex-col container max-w-4xl mx-auto text-white items-center justify-center mt-20 gap-3'>
+            <img src={profile?.images?.[0].url} className='rounded-full max-w-[150px]'/>
+            <h1 className='text-3xl text-white font-bold'>{profile?.display_name}</h1>
+            {/* Followers Badge */}
+            <span className='px-2 py-1 font-semibold bg-dark-100 rounded-md'>{profile?.followers.total} followers</span>
+            <a href={profile?.external_urls.spotify} className='px-2 py-1 font-semibold bg-dark-100 transition hover:bg-accent-200 hover:text-dark-100 rounded-md'>Follow on Spotify</a>
         </div>
     )
 }
