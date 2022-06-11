@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .utext {
+        @apply text-white;
+        @apply green-underline;
+    }
+
+    .nav-link {
+        @apply text-white;
+        @apply font-semibold;
+        @apply transition;
+        @apply hover:text-gray-400;
+        padding: 2px;
+    }
+
+    .nav-link-active {
+        @apply nav-link;
+        @apply green-underline;
+    }
+
+    .green-underline {
+        border-bottom: 2px solid #1FDF64;
+    }
+}
