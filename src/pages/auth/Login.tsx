@@ -5,7 +5,7 @@ export default function Login() {
     const api = useApi();
 
     return (
-        <div className='h-full flex flex-col items-start justify-center py-12 gap-3 container max-w-4xl mx-auto p-3'>
+        <div className='h-full flex flex-1 flex-col items-start justify-center py-12 gap-3 container max-w-4xl mx-auto p-3'>
             {/* Message */}
             <h1 className='text-4xl font-bold text-white'>Your Spotify stats &ndash; anywhere, anytime.</h1>
             <p className='text-lg text-gray-400'>View details about your favourite tracks and artists in the past <span className='utext'>month</span>, <span className='utext'>6 months</span> or <span className='utext'>all time</span>.</p>

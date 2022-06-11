@@ -52,7 +52,7 @@ function App() {
     return (
         <>
             <Header />
-            <div className='bg-dark-200 flex flex-col p-3 h-screen overflow-y-auto'>
+            <div className='bg-dark-200 flex flex-col p-3 min-h-screen'>
                 <Routes>
                     {routes}
                 </Routes>
