@@ -12,17 +12,17 @@ export default function Callback() {
 
     useEffect(() => {
         const hash = location.hash.replace("#", "?");
-        const access_token = new URLSearchParams(hash).get("access_token")
+        const access_token = new URLSearchParams(hash).get("access_token");
 
         if (access_token) {
             localStorage.setItem("token", access_token);
 
             // Store time of token expiration - 3600 seconds from now
-            const expiration = dayjs().add(dayjs.duration(3600, 's')).toISOString()
+            const expiration = dayjs().add(dayjs.duration(3600, 's')).toISOString();
             localStorage.setItem("token_expiry", expiration);
 
             setToken(access_token);
-            setExpiration(expiration)
+            setExpiration(expiration);
         }
         
         navigate("/", {replace: true});
