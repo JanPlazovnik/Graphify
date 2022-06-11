@@ -46,7 +46,7 @@ export default function TopArtists() {
             <div className='flex flex-row items-center justify-between'>
                 <h2 className='text-3xl font-bold my-7'>Your Top {artists.length} artists</h2>
                 <div className='flex flex-row items-center gap-2'>
-                    <span>Time range:</span>
+                    <span className='hidden md:block'>Time range:</span>
                     <Listbox value={selected} onChange={updateSelection}>
                         <div className="relative mt-1 min-w-[150px]">
                             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-dark-100 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
