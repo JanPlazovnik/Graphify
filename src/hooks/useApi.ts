@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../state/recoil';
-import { ArtistsResponse, TimeRange, TracksResponse } from '../types/spotify';
+import { ArtistsResponse, SpotifyProfile, TimeRange, TracksResponse } from '../types/spotify';
 
 export default function useApi() {
     const [token,] = useRecoilState(tokenState);
@@ -14,6 +14,10 @@ export default function useApi() {
                 `scope=${import.meta.env.VITE_APP_SPOTIFY_SCOPE}`,
                 `response_type=token`
             ].join("&");
+        }
+
+        public me(): Promise<AxiosResponse<SpotifyProfile>> {
+            return axios.get(`https://api.spotify.com/v1/me`, { headers: { 'Authorization': `Bearer ${token}` } });
         }
 
         public artists(limit = 10, time_range: TimeRange = "medium_term"): Promise<AxiosResponse<ArtistsResponse>> {

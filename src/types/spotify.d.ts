@@ -55,7 +55,7 @@ export interface Album {
 
 export interface Track {
     album: Album;
-    artists: Artist2[];
+    artists: TrackArtist[];
     available_markets: string[];
     disc_number: number;
     duration_ms: number;
@@ -73,6 +73,19 @@ export interface Track {
     popularity: number;
     preview_url: string;
     track_number: number;
+    type: string;
+    uri: string;
+}
+
+export interface SpotifyProfile {
+    display_name: string;
+    external_urls: {
+        spotify: string;
+    };
+    followers: Followers;
+    href: string;
+    id: string;
+    images: Image[];
     type: string;
     uri: string;
 }
