@@ -10,8 +10,8 @@ export default function Header() {
     const [token, ] = useRecoilState(tokenState);
 
     return (
-        <nav className='bg-black fixed w-full justify-center flex shadow-md z-[9999]'>
-            <div className='container py-3 max-w-4xl flex flex-row gap-5'>
+        <nav className='bg-black fixed p-3 w-full justify-center flex shadow-md z-[9999]'>
+            <div className='container max-w-4xl flex flex-row gap-5'>
                 <Link to='/'><h1 className='text-2xl font-bold text-accent-200'>Spotify Stats</h1></Link>
                 { token && (
                     <>
