@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    scrollbar-color: #1FDF64 #282828;
+    scrollbar-width: thin;
+}
+
 @layer utilities {
     .utext {
         @apply text-white;
